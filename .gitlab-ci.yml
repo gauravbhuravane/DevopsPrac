@@ -1,0 +1,30 @@
+stages:
+  - build
+  - test
+  - deploy
+
+image: node:18
+
+cache:
+  paths:
+    - node_modules/
+
+before_script:
+  - npm install
+
+build:
+  stage: build
+  script:
+    - npm run build
+
+test:
+  stage: test
+  script:
+    - npm test
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying... (replace with real command)"
+  only:
+    - main
